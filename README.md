@@ -1,13 +1,13 @@
 # Vought International
 A general purpose bot for The Boys Discord server
 
-## Goals
+## Goals:
 * Rebuild the previous bot for the server, built by Castdrian
 * Add new features
 * Make the server more fun to be in
 * Provide everything you would need for the show in one place!
 
-## Commands
+## Commands:
 All commands are set up as slash commands. In order to access them, use "/", and a menu should pop up. Select Vought International from the sidebar and each command should come up and guide you through how to use it.
 
 ### Show-related:
@@ -28,15 +28,15 @@ All commands are set up as slash commands. In order to access them, use "/", and
 * Shuffle: shuffle the current queue
 * Queue: view the current queue
 
-## How to contribute
+## How to contribute:
 * You can request a feature for this bot [here](https://docs.google.com/forms/d/e/1FAIpQLSdJaip7BjNpMwKQ-6-T-XxW6Ks_5QeRL5mPwW6yZSesVPSmBQ/viewform?usp=sf_link)
 * Issues can be reported [here](https://docs.google.com/forms/d/e/1FAIpQLSdyALu5wcAB1Ub-8bAcusu-tilqIQ1wt_2h0gAzr2Zw8GsH5A/viewform?usp=sf_link)
 
 
-## Support me
+## Support me:
 * My [PayPal](https://paypal.me/colinkehoedev?country.x=US&locale.x=en_US)
 
-## Node packages I used to build this bot
+## Node packages I used to build this bot:
 * [Discord.js](https://www.npmjs.com/package/discord.js?source=post_page-----7b5fe27cb6fa----------------------)
 * [Node-Fetch](https://www.npmjs.com/package/node-fetch)
 * [Discord-Player](https://www.npmjs.com/package/discord-player)
