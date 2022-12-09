@@ -128,3 +128,7 @@ dist
 
 package-lock.json
 tsconfig.json
+
+nodemon.json
+.gitattributes
+.vscode/
