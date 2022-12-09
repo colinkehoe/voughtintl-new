@@ -15,6 +15,9 @@ All commands are set up as slash commands. In order to access them, use "/", and
 * Fresca: create a poll to fight for the right to join the Church of the Collective
 * Next: will give you information about the next coming episode of the show, as well as a countdown to its premiere
 
+### For fun:
+* Define: will either define a given word using Urban Dicitonary, or pick a random word to define.
+
 ### Music:
 * Play: will play a song in the voice channel you are currently in.
 * Skip: will skip the current song
@@ -39,3 +42,4 @@ All commands are set up as slash commands. In order to access them, use "/", and
 * [Discord-Player](https://www.npmjs.com/package/discord-player)
 * [Nodemon](https://www.npmjs.com/package/nodemon)
 * [Dotenv](https://www.npmjs.com/package/dotenv)
+* [Urban-Dictionary](https://www.npmjs.com/package/urban-dictionary#random)
