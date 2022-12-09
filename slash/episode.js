@@ -77,7 +77,7 @@ module.exports = {
         const episodeDescriptions = episodesJSON.map(episode => episode.summary.replace(/<\/?[^>]+>/gi, ''));
         const episodeImages = episodesJSON.map(episode => episode.image.original);
         const episodeRuntimes = episodesJSON.map(episode => episode.runtime.toString());
-        const episodeAirDates = episodesJSON.map(episode => episode.airdate);
+        let episodeAirDates = episodesJSON.map(episode => episode.airdate);
         const episodeRating = episodesJSON.map(episode => episode.rating.average.toString());
 
         if (!episode) {
@@ -118,7 +118,7 @@ module.exports = {
                     value: episodeDescriptions[7],
                 })
                 .setFooter({
-                    text: `Requested by ${interaction.user.username}`
+                    text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL({ dynamic: true })
                 })
                 .setThumbnail(seasonImages[season - 1])
                 .setColor(0x00ff00);
@@ -134,7 +134,7 @@ module.exports = {
                 })
                 .addFields({
                     name: 'Episode Duration',
-                    value: episodeRuntimes[episode -1]
+                    value: episodeRuntimes[episode -1] + ' minutes'
                 })
                 .addFields({
                     name: 'Episode Air Date',
@@ -145,7 +145,7 @@ module.exports = {
                     value: episodeRating[episode - 1]
                 })
                 .setFooter({
-                    text: `Requested by ${interaction.user.username}`
+                    text: `Requested by ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL({ dynamic: true })
                 })
                 .setThumbnail(episodeImages[season - 1])
                 .setColor(0x00ff00);
