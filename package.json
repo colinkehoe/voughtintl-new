@@ -2,7 +2,7 @@
   "name": "voughtintl-new",
   "version": "1.0.0",
   "description": "",
-  "main": "main.js",
+  "main": "./src/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./src/main.ts",
@@ -13,7 +13,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@discordjs/opus": "^0.8.0",
     "@discordjs/rest": "^1.4.0",
+    "@discordjs/voice": "^0.14.0",
+    "discord-player": "^5.3.2",
     "discord.js": "^14.7.1",
     "dotenv": "^16.0.1",
     "fs": "^0.0.1-security",

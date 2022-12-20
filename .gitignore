@@ -132,6 +132,3 @@ tsconfig.json
 nodemon.json
 .gitattributes
 .vscode/
-
-package-lock.json
-package-lock.json
