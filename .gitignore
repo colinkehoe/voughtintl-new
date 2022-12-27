@@ -132,3 +132,5 @@ tsconfig.json
 nodemon.json
 .gitattributes
 .vscode/
+
+.DS_Store
