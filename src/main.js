@@ -30,7 +30,7 @@ client.player = new Player(client, {
 client.slashcommands = new Discord.Collection();
 let commands = [];
 
-const sourceFiles = fs.readdirSync('./src/commands');
+const sourceFiles = fs.readdirSync('./src/commands').filter(folder => !folder.endsWith('.DS_Store'));
 for (const folder of sourceFiles) {
     const files = fs.readdirSync(`./src/commands/${folder}`).filter(file => file.endsWith('.js'));        //grab all commands
     for (const file of files) {
@@ -70,30 +70,45 @@ else if (LOAD_SLASH) {
     client.on('ready', () => {
         console.log (`Logged in as ${client.user.tag}`);                                       //console log bot username      
     });
+
     client.on('interactionCreate', (interaction) => {
-        async function handleCommand() {                                                       //handle slash commands             
-            if (!interaction.isCommand()) return;
+        let reportedUsers = [];
+
+        async function handleChatCommand() {                                                       //handle slash commands             
+            if (!interaction.isChatInputCommand()) return;
             const slashcmd = client.slashcommands.get(interaction.commandName);
             if (!slashcmd) interaction.reply('That is not a valid command!');
 
             await interaction.deferReply();
             await slashcmd.run({ client, interaction });
         }
-        handleCommand();
+        async function handleContextMenuCommand() {
+            console.log(interaction);
+            const command = client.slashcommands.get(interaction.commandName);
+            if (!command) interaction.reply('That is not a valid command!');
+            await command.run({ client, interaction });
+        }
+        async function handleReport() {
+            console.log(reportedUsers);
+            require('./events/client/contextMenu/handleReport.js').run({ client, interaction, reportedUsers });
+        }
+
+        if (interaction.isChatInputCommand()) handleChatCommand();
+        if (interaction.isContextMenuCommand()) handleContextMenuCommand();
+        if (interaction.isModalSubmit()) handleReport();
     });
 
-    client.on('interactionCreate', (interaction) => {
-        async function handleButton() {
-            if (!interaction.isButton()) return;
-            const button = client.buttons.get(interaction.customId);
-            if (!button) interaction.reply('That is not a valid button!');
-            await interaction.deferReply();
+    client.on('guildMemberAdd', (member) => {
+        require('./events/client/guildMemberAdd.js').run({ client, message, member });
+    });
 
-            console.log('User clicked button: ' + interaction.customId);
+    client.on('guildMemberRemove', (member) => {
+        require('./events/client/guildMemberRemove.js').run({ client, message, member });
+    });
 
-            await button.run({ client, interaction });
-        }
-    })
+    client.on('guildBanAdd', (guild, user) => {
+        require('./events/client/guildBanAdd.js').run({ client, guild, user });
+    });
 
     client.login(TOKEN);
 }

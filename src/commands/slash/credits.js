@@ -6,7 +6,7 @@ module.exports = {
         .setDescription('Replies with the credits for the bot.'),
     run: async ({ client, interaction }) => {
         const embed = new EmbedBuilder()
-            .setTitle('Vought International Credits')
+            .setAuthor({ name: 'Credits', iconURL: client.user.avatarURL })
             .addFields({ name: 'Developer',      value: 'colinkehoe#8735'})
             .addFields({ name: 'Donate',         value: '[My PayPal](https://www.paypal.com/paypalme/colinkehoedev)'})
             .addFields({ name: 'Contributors',   value:'Borgninja#0042'})

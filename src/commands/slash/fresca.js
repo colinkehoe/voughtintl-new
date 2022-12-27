@@ -56,11 +56,11 @@ module.exports = {
 
                 if (votesyes > votesno) {
                     user.roles.add('Fresca');                                                                                                       //give fresca role if user has majority of votes
-                    interaction.editReply(`Congratulations ${interaction.user.tag}, you have been deemed worthy of the Fresca role.`);
+                    interaction.channel.send(`Congratulations ${interaction.user.tag}, you have been deemed worthy of the Fresca role.`);
                 }
                 else {
                     user.roles.add('No Fresca');                                                                                                    //give no fresca role if user does not have majority of votes
-                    interaction.editReply(`Sorry ${interaction.user.tag}, you have been deemed unworthy of the Fresca role. Have the No Fresca role as punishment.`);
+                    interaction.channel.send(`Sorry ${interaction.user.tag}, you have been deemed unworthy of the Fresca role. Have the No Fresca role as punishment.`);
                 }
             });
         } else {

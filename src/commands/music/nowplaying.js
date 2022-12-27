@@ -33,26 +33,30 @@ module.exports = {
             .addComponents(
                 new ButtonBuilder()
                     .setCustomId('pause')
-                    .setLabel('Pause')
-                    .setStyle(ButtonStyle.Primary),
-                new ButtonBuilder()
-                    .setCustomId('resume')
-                    .setLabel('Resume')
+                    .setEmoji('⏸️')
                     .setStyle(ButtonStyle.Primary),
                 new ButtonBuilder()
                     .setCustomId('skip')
-                    .setLabel('Skip')
+                    .setEmoji('⏭️')
                     .setStyle(ButtonStyle.Primary),
-                new ButtonBuilder() 
+                new ButtonBuilder()
                     .setCustomId('stop')
-                    .setLabel('Stop')
+                    .setEmoji('⏹️')
                     .setStyle(ButtonStyle.Primary),
                 new ButtonBuilder()
                     .setCustomId('queue')
-                    .setLabel('Queue')
+                    .setEmoji('📜')
                     .setStyle(ButtonStyle.Primary),
         )
         
         await interaction.editReply({ ephemeral: true, embeds: [embed], components: [row] });
+
+        const collector = interaction.channel.createMessageComponentCollector({
+            filter: i => i.customId === 'pause' || i.customId === 'resume' || i.customId === 'skip' || i.customId === 'stop' || i.customId === 'queue', time: 60000
+        });
+
+        collector.on('collect', async button => {
+            require(`../../buttons/nowplaying/${button.customId}.js`).run({ client, button });
+        })
     }
 }
