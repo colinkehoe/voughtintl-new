@@ -134,3 +134,9 @@ nodemon.json
 .vscode/
 
 .DS_Store
+
+dist
+
+.prettierrc.json
+.prettierignore
+.idea
