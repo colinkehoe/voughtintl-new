@@ -22,7 +22,7 @@ export const random_chance = (chance: number) => {
     return random < fractionalChance;
 };
 
-export const delay = (ms: number) => new Promise(res => setTimeout(res, ms));
+export const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
 
 export const check_permissions = (
     member: GuildMember,

@@ -1,4 +1,9 @@
-import { Client, ChatInputCommandInteraction, SlashCommandBuilder, EmbedBuilder } from "discord.js";
+import {
+    Client,
+    ChatInputCommandInteraction,
+    SlashCommandBuilder,
+    EmbedBuilder,
+} from "discord.js";
 import { SlashCommand } from "../../types";
 
 const shuffle: SlashCommand = {
@@ -7,7 +12,9 @@ const shuffle: SlashCommand = {
         .setDescription("Shuffle the current queue."),
     run: async (client: Client, interaction: ChatInputCommandInteraction) => {
         if (!interaction.guildId) {
-            console.log(`#${interaction.user.tag} has tried to issue a command in DMs.`);
+            console.log(
+                `#${interaction.user.tag} has tried to issue a command in DMs.`
+            );
             return interaction.editReply("You can't use this command in DMs!");
         }
         const queue = client.player.getQueue(interaction.guildId);
@@ -28,7 +35,7 @@ const shuffle: SlashCommand = {
                           .setDescription("Shuffled the queue!")
                           .setFooter({
                               text: `Shuffled by ${interaction.user.tag}`,
-                              iconURL: interaction.user?.avatarURL()!
+                              iconURL: interaction.user?.avatarURL()!,
                           })
                           .setTimestamp(),
                   ],

@@ -49,13 +49,18 @@ const ban: SlashCommand = {
                     role.name === "Overlord";
             })
         ) {
-            await member.ban().then(() => {
-                console.log(`Banned ${target.tag}`);
-                interaction.editReply(`${interaction.user.tag} has banned ${target.tag}`);
-            }).catch((err) => {
-                console.error(err);
-                interaction.editReply("I can't ban this user");
-            });
+            await member
+                .ban()
+                .then(() => {
+                    console.log(`Banned ${target.tag}`);
+                    interaction.editReply(
+                        `${interaction.user.tag} has banned ${target.tag}`
+                    );
+                })
+                .catch((err) => {
+                    console.error(err);
+                    interaction.editReply("I can't ban this user");
+                });
         } else {
             await interaction.editReply(
                 "You don't have permission to ban this user"
