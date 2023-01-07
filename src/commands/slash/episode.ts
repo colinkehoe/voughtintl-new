@@ -3,29 +3,29 @@ import {
     ChatInputCommandInteraction,
     SlashCommandBuilder,
     EmbedBuilder,
-} from "discord.js";
-import { SlashCommand, SeasonInfo } from "../../types";
-import { fetch_JSON } from "../../utils/utils";
+} from 'discord.js';
+import { SlashCommand, SeasonInfo } from '../../types';
+import { fetch_JSON } from '../../utils/utils';
 
 const episode: SlashCommand = {
     data: new SlashCommandBuilder()
-        .setName("episode")
-        .setDescription("Get information about each episode of The Boys")
+        .setName('episode')
+        .setDescription('Get information about each episode of The Boys')
         .addNumberOption((option) =>
             option
-                .setName("season")
-                .setDescription("The season number")
+                .setName('season')
+                .setDescription('The season number')
                 .addChoices(
                     {
-                        name: "Season 1",
+                        name: 'Season 1',
                         value: 1,
                     },
                     {
-                        name: "Season 2",
+                        name: 'Season 2',
                         value: 2,
                     },
                     {
-                        name: "Season 3",
+                        name: 'Season 3',
                         value: 3,
                     }
                 )
@@ -33,47 +33,47 @@ const episode: SlashCommand = {
         )
         .addNumberOption((option) =>
             option
-                .setName("episode")
-                .setDescription("The episode number")
+                .setName('episode')
+                .setDescription('The episode number')
                 .addChoices(
                     {
-                        name: "Episode 1",
+                        name: 'Episode 1',
                         value: 1,
                     },
                     {
-                        name: "Episode 2",
+                        name: 'Episode 2',
                         value: 2,
                     },
                     {
-                        name: "Episode 3",
+                        name: 'Episode 3',
                         value: 3,
                     },
                     {
-                        name: "Episode 4",
+                        name: 'Episode 4',
                         value: 4,
                     },
                     {
-                        name: "Episode 5",
+                        name: 'Episode 5',
                         value: 5,
                     },
                     {
-                        name: "Episode 6",
+                        name: 'Episode 6',
                         value: 6,
                     },
                     {
-                        name: "Episode 7",
+                        name: 'Episode 7',
                         value: 7,
                     },
                     {
-                        name: "Episode 8",
+                        name: 'Episode 8',
                         value: 8,
                     }
                 )
                 .setRequired(false)
         ),
     run: async (client: Client, interaction: ChatInputCommandInteraction) => {
-        const season: number | null = interaction.options.getNumber("season"); //Get user input
-        const episode: number | null = interaction.options.getNumber("episode");
+        const season: number | null = interaction.options.getNumber('season'); //Get user input
+        const episode: number | null = interaction.options.getNumber('episode');
 
         const seasonsAPI = encodeURI(
             `http://api.tvmaze.com/shows/15299/seasons`
@@ -83,12 +83,12 @@ const episode: SlashCommand = {
             (season: SeasonInfo.Season) => season.id
         );
         const seasonSummaries = seasons.map((season: SeasonInfo.Season) =>
-            season.summary.replace(/<\/?[^>]+>/gi, "")
+            season.summary.replace(/<\/?[^>]+>/gi, '')
         );
         const seasonImages = seasons.map((season: SeasonInfo.Season) => {
             const href = season.image!.original;
             if (!href)
-                return "https://static.tvmaze.com/uploads/images/medium_portrait/0/1.jpg";
+                return 'https://static.tvmaze.com/uploads/images/medium_portrait/0/1.jpg';
             else return href;
         });
 
@@ -103,13 +103,13 @@ const episode: SlashCommand = {
         );
         const episodeDescriptions = episodesJSON.map(
             (episode: SeasonInfo.Episode) =>
-                episode.summary.replace(/<\/?[^>]+>/gi, "")
+                episode.summary.replace(/<\/?[^>]+>/gi, '')
         );
         const episodeImages = episodesJSON.map(
             (episode: SeasonInfo.Episode) => {
                 const href = episode.image!.original;
                 if (!href)
-                    return "https://static.tvmaze.com/uploads/images/medium_portrait/0/1.jpg";
+                    return 'https://static.tvmaze.com/uploads/images/medium_portrait/0/1.jpg';
                 else return href;
             }
         );
@@ -173,19 +173,19 @@ const episode: SlashCommand = {
                 .setAuthor({ name: `Season ${season}, Episode ${episode}` })
                 .setTitle(`${episodeNames[episode - 1]}`)
                 .addFields({
-                    name: "Episode Summary",
+                    name: 'Episode Summary',
                     value: episodeDescriptions[episode - 1],
                 })
                 .addFields({
-                    name: "Episode Duration",
-                    value: episodeRuntimes[episode - 1] + " minutes",
+                    name: 'Episode Duration',
+                    value: episodeRuntimes[episode - 1] + ' minutes',
                 })
                 .addFields({
-                    name: "Episode Air Date",
+                    name: 'Episode Air Date',
                     value: episodeAirDates[episode - 1],
                 })
                 .addFields({
-                    name: "Episode Rating",
+                    name: 'Episode Rating',
                     value: episodeRating[episode - 1],
                 })
                 .setFooter({

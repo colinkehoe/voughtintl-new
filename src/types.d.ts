@@ -8,15 +8,17 @@ import {
     AutocompleteInteraction,
     GuildMemberRoleManager,
     Snowflake,
-} from "discord.js";
-import { ImageURLOptions } from "@discordjs/rest";
+    ButtonInteraction,
+    ContextMenuCommandBuilder,
+} from 'discord.js';
+import { ImageURLOptions } from '@discordjs/rest';
 import {
     Player,
     PlayerInitOptions,
     Track,
     Queue,
     PlayerOptions,
-} from "discord-player";
+} from 'discord-player';
 
 declare global {
     namespace NodeJS {
@@ -45,9 +47,14 @@ export interface Command {
     permissions?: PermissionResolvable[];
 }
 
-export interface UserContextMenuCommand {
-    name: string;
-    run: (client: Client, interaction: any) => Promise<void>;
+export interface ContextMenuCommand {
+    data: ContextMenuCommandBuilder;
+    run: (
+        client: Client,
+        interaction:
+            | ContextMenuCommandInteraction
+            | UserContextMenuCommandInteraction
+    ) => Promise<void>;
     permissions?: PermissionResolvable[];
     cooldown?: number;
 }
@@ -60,11 +67,15 @@ export interface Event {
 
 export interface Button {
     name: string;
-    run: (client: Client, interaction: any) => Promise<void>;
+    run: (
+        client: Client,
+        button: ButtonInteraction,
+        ...args
+    ) => Promise<InteractionResponse>;
     cooldown?: number;
 }
 
-declare module "discord.js" {
+declare module 'discord.js' {
     export interface Client {
         slashCommands: Collection<string, SlashCommand>;
         events: Collection<string, Event>;
@@ -160,15 +171,15 @@ declare module "discord.js" {
     }
 }
 
-declare module "@discordjs/rest" {
+declare module '@discordjs/rest' {
     export interface ImageURLOptions {
-        format?: "webp" | "png" | "jpg" | "jpeg";
+        format?: 'webp' | 'png' | 'jpg' | 'jpeg';
         size?: 16 | 32 | 64 | 128 | 256 | 512 | 1024 | 2048 | 4096;
         dynamic?: boolean;
     }
 }
 
-declare module "discord-player" {
+declare module 'discord-player' {
     export interface PlayerInitOptions {}
 
     export interface Track {}
@@ -199,7 +210,7 @@ declare module "discord-player" {
         nowPlaying: () => Track;
         play: (src?: Track, options?: PlayOptions) => Promise<void>;
         setPaused: (paused?: boolean) => boolean;
-        setBitrate: (bitrate: number | "auto") => void;
+        setBitrate: (bitrate: number | 'auto') => void;
         setFilters: (filters?: QueueFilters) => Promise<void>;
         setRepeatMode: (mode: QueueRepeatMode) => boolean;
         setVolume: (amount: number) => boolean;

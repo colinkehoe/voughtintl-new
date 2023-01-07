@@ -3,13 +3,13 @@ import {
     ChatInputCommandInteraction,
     SlashCommandBuilder,
     EmbedBuilder,
-} from "discord.js";
-import { SlashCommand } from "../../types";
+} from 'discord.js';
+import { SlashCommand } from '../../types';
 
 const shuffle: SlashCommand = {
     data: new SlashCommandBuilder()
-        .setName("shuffle")
-        .setDescription("Shuffle the current queue."),
+        .setName('shuffle')
+        .setDescription('Shuffle the current queue.'),
     run: async (client: Client, interaction: ChatInputCommandInteraction) => {
         if (!interaction.guildId) {
             console.log(
@@ -20,7 +20,7 @@ const shuffle: SlashCommand = {
         const queue = client.player.getQueue(interaction.guildId);
 
         if (!queue || !queue.playing)
-            return interaction.editReply("There is no music playing!");
+            return interaction.editReply('There is no music playing!');
 
         const success = queue.shuffle();
         success
@@ -28,11 +28,11 @@ const shuffle: SlashCommand = {
                   embeds: [
                       new EmbedBuilder()
                           .setAuthor({
-                              name: "Voughtify",
+                              name: 'Voughtify',
                               iconURL: client.user?.avatarURL()!,
                           })
-                          .setTitle("Queue Shuffled")
-                          .setDescription("Shuffled the queue!")
+                          .setTitle('Queue Shuffled')
+                          .setDescription('Shuffled the queue!')
                           .setFooter({
                               text: `Shuffled by ${interaction.user.tag}`,
                               iconURL: interaction.user?.avatarURL()!,
@@ -41,7 +41,7 @@ const shuffle: SlashCommand = {
                   ],
               })
             : await interaction.editReply(
-                  "There was an error shuffling the queue."
+                  'There was an error shuffling the queue.'
               );
     },
 };

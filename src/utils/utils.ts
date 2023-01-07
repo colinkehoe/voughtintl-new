@@ -5,15 +5,15 @@ import {
     TextChannel,
     PermissionResolvable,
     PermissionFlagsBits,
-} from "discord.js";
-import fetch from "node-fetch";
+} from 'discord.js';
+import fetch from 'node-fetch';
 
-type colorType = "text" | "variable" | "error";
+type colorType = 'text' | 'variable' | 'error';
 
 const themeColors = {
-    text: "#ff8e4d",
-    variable: "#ff624d",
-    error: "#f5426c",
+    text: '#ff8e4d',
+    variable: '#ff624d',
+    error: '#f5426c',
 };
 
 export const random_chance = (chance: number) => {
@@ -38,12 +38,12 @@ export const check_permissions = (
 
     if (neededPermissions.length === 0) return null;
     return neededPermissions.map((p) => {
-        if (typeof p === "string") return p.split(/(?=[A-Z])/).join(" ");
+        if (typeof p === 'string') return p.split(/(?=[A-Z])/).join(' ');
         else
             return Object.keys(PermissionFlagsBits)
                 .find((k) => Object(PermissionFlagsBits)[k] === p)
                 ?.split(/(?=[A-Z])/)
-                .join(" ");
+                .join(' ');
     });
 };
 

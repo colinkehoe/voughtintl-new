@@ -4,7 +4,7 @@
   "description": "",
   "main": "./dist/bot.js",
   "scripts": {
-    "prettier": "npx prettier -w --tab-width 4 \"./src/**/*.ts\"",
+    "prettier": "npx prettier -w --single-quote --tab-width 4 \"./src/**/*.ts\"",
     "build": "npx tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon ./dist/bot.js"

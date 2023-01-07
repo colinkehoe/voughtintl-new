@@ -4,8 +4,8 @@ import {
     SlashCommandBuilder,
     EmbedBuilder,
     GuildMember,
-} from "discord.js";
-import { SlashCommand } from "../../types";
+} from 'discord.js';
+import { SlashCommand } from '../../types';
 
 /*
  *   @param { Client } client - The client object.
@@ -15,12 +15,12 @@ import { SlashCommand } from "../../types";
 
 const mute: SlashCommand = {
     data: new SlashCommandBuilder()
-        .setName("mute")
-        .setDescription("Mute a user.")
+        .setName('mute')
+        .setDescription('Mute a user.')
         .addMentionableOption((option) =>
             option
-                .setName("user")
-                .setDescription("The user to mute.")
+                .setName('user')
+                .setDescription('The user to mute.')
                 .setRequired(true)
         ),
     run: async (client: Client, interaction: ChatInputCommandInteraction) => {
@@ -31,9 +31,9 @@ const mute: SlashCommand = {
             return interaction.editReply("You can't use this command in DMs!");
         }
 
-        const target: any = interaction.options.getMentionable("user", true);
+        const target: any = interaction.options.getMentionable('user', true);
         if (!target)
-            return interaction.editReply("You must mention a user to mute!");
+            return interaction.editReply('You must mention a user to mute!');
         if (target.id === interaction.user.id)
             return interaction.editReply("You can't mute yourself!");
         if (target.bot) return interaction.editReply("You can't mute me!");
@@ -42,17 +42,17 @@ const mute: SlashCommand = {
             await interaction.guild?.members.fetch(target.id);
         if (!member)
             return interaction.editReply(
-                "That user is not a member of this server!"
+                'That user is not a member of this server!'
             );
         if (!member.manageable)
             return interaction.editReply("I can't mute that user!");
 
         const mutedRole = interaction.guild?.roles.cache.find(
-            (role) => role.name === "Muted"
+            (role) => role.name === 'Muted'
         );
         if (!mutedRole)
             return interaction.editReply(
-                "There is no muted role in this server!"
+                'There is no muted role in this server!'
             );
         member.roles
             .add(mutedRole)
@@ -61,10 +61,10 @@ const mute: SlashCommand = {
                     embeds: [
                         new EmbedBuilder()
                             .setAuthor({
-                                name: "Voughtify",
+                                name: 'Voughtify',
                                 iconURL: client.user?.avatarURL()!,
                             })
-                            .setTitle("User Muted")
+                            .setTitle('User Muted')
                             .setDescription(`${target} has been muted!`)
                             .setFooter({
                                 text: `Muted by ${interaction.user.tag}`,
@@ -75,7 +75,7 @@ const mute: SlashCommand = {
                 });
             })
             .catch(() => {
-                interaction.editReply("There was an error muting that user!");
+                interaction.editReply('There was an error muting that user!');
             });
     },
 };

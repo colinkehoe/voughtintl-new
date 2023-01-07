@@ -11,9 +11,9 @@ import {
     DMChannel,
     Role,
     GuildMemberRoleManager,
-} from "discord.js";
-import { SlashCommand } from "../../types";
-import { delay } from "../../utils/utils";
+} from 'discord.js';
+import { SlashCommand } from '../../types';
+import { delay } from '../../utils/utils';
 
 /*
  *   @param { Client } client - The client object.
@@ -24,18 +24,18 @@ import { delay } from "../../utils/utils";
 
 const nuke: SlashCommand = {
     data: new SlashCommandBuilder()
-        .setName("nuke")
-        .setDescription("Nuke a channel.")
+        .setName('nuke')
+        .setDescription('Nuke a channel.')
         .addChannelOption((option) =>
             option
-                .setName("channel")
-                .setDescription("The channel to nuke.")
+                .setName('channel')
+                .setDescription('The channel to nuke.')
                 .setRequired(false)
         )
         .addStringOption((option) =>
             option
-                .setName("amount")
-                .setDescription("The amount of messages to delete.")
+                .setName('amount')
+                .setDescription('The amount of messages to delete.')
                 .setRequired(false)
         ),
     run: async (client: Client, interaction: ChatInputCommandInteraction) => {
@@ -54,12 +54,12 @@ const nuke: SlashCommand = {
 
         if (
             !memberRoles.find(
-                (role: Role) => role.name === "Vought Executives (Admin)"
+                (role: Role) => role.name === 'Vought Executives (Admin)'
             ) &&
             !memberRoles.find(
-                (role: Role) => role.name === "Vought Executives (Mod)"
+                (role: Role) => role.name === 'Vought Executives (Mod)'
             ) &&
-            !memberRoles.find((role: Role) => role.name === "Overlord")
+            !memberRoles.find((role: Role) => role.name === 'Overlord')
         ) {
             return interaction.editReply(
                 "You don't have permission to use this command!"
@@ -67,8 +67,8 @@ const nuke: SlashCommand = {
         }
 
         const channel: any =
-            interaction.options.getChannel("channel") ?? interaction.channel;
-        const number: string = interaction.options.getString("amount") ?? "100";
+            interaction.options.getChannel('channel') ?? interaction.channel;
+        const number: string = interaction.options.getString('amount') ?? '100';
         if (!channel)
             return interaction.editReply("You can't use this command in DMs!");
 
@@ -81,7 +81,7 @@ const nuke: SlashCommand = {
         if (channel instanceof DMChannel)
             return interaction.editReply("You can't nuke a DM channel!");
 
-        if (number === "100") {
+        if (number === '100') {
             const messages = await channel.messages.fetch();
             await channel.bulkDelete(messages, true);
             await delay(5000);

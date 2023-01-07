@@ -1,17 +1,17 @@
-import { Client, Routes, SlashCommandBuilder } from "discord.js";
-import { REST } from "@discordjs/rest";
-import { readdirSync } from "fs";
-import { SlashCommand, Command } from "../types";
+import { Client, Routes, SlashCommandBuilder } from 'discord.js';
+import { REST } from '@discordjs/rest';
+import { readdirSync } from 'fs';
+import { SlashCommand, Command } from '../types';
 
 module.exports = (client: Client) => {
     const SlashCommands: SlashCommandBuilder[] = [];
     const commands: Command[] = [];
 
-    readdirSync("./dist/commands")
-        .filter((folder) => !folder.endsWith(".DS_Store"))
+    readdirSync('./dist/commands')
+        .filter((folder) => !folder.endsWith('.DS_Store'))
         .forEach((folder) => {
             readdirSync(`./dist/commands/${folder}`)
-                .filter((file) => !file.endsWith(".DS_Store"))
+                .filter((file) => !file.endsWith('.DS_Store'))
                 .forEach((file) => {
                     const command: SlashCommand =
                         require(`../commands/${folder}/${file}`).default;
@@ -23,7 +23,7 @@ module.exports = (client: Client) => {
                 });
         });
 
-    const rest = new REST({ version: "10" }).setToken(
+    const rest = new REST({ version: '10' }).setToken(
         process.env.DISCORD_TOKEN!
     );
 

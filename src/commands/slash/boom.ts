@@ -3,21 +3,21 @@ import {
     SlashCommandBuilder,
     EmbedBuilder,
     IntegrationApplication,
-} from "discord.js";
-import { SlashCommand } from "../../types";
+} from 'discord.js';
+import { SlashCommand } from '../../types';
 
 const boom: SlashCommand = {
     data: new SlashCommandBuilder()
-        .setName("boom")
-        .setDescription("BOOM")
+        .setName('boom')
+        .setDescription('BOOM')
         .addUserOption((option) =>
             option
-                .setName("target")
-                .setDescription("The user to boom")
+                .setName('target')
+                .setDescription('The user to boom')
                 .setRequired(true)
         ),
     run: async (client: Client, interaction: any) => {
-        const target = interaction.options.getUser("target");
+        const target = interaction.options.getUser('target');
 
         if (target.bot)
             return interaction.editReply(`You can't try to blow up a bot!`);
@@ -28,12 +28,12 @@ const boom: SlashCommand = {
 
         const embed = new EmbedBuilder()
             .setAuthor({
-                name: "Vought International",
+                name: 'Vought International',
                 iconURL: client.user?.avatarURL()!,
             })
-            .setTitle("Boom!")
+            .setTitle('Boom!')
             .setDescription(`You blew up ${target.tag}!`)
-            .setImage("https://cdn.hswstatic.com/gif/shc-update.jpg")
+            .setImage('https://cdn.hswstatic.com/gif/shc-update.jpg')
             .setFooter({
                 text: `Requested by ${interaction.user.tag}`,
                 iconURL: interaction.user.avatarURL(),
