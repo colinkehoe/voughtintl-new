@@ -49,7 +49,7 @@ const nowplaying: SlashCommand = {
                 iconURL: queue.current.requestedBy.avatarURL()!,
             });
 
-        let row: any = new ActionRowBuilder().addComponents(
+        let row: ActionRowBuilder<ButtonBuilder> = new ActionRowBuilder<ButtonBuilder>().addComponents(
             new ButtonBuilder()
                 .setCustomId('pause')
                 .setEmoji('⏸️')

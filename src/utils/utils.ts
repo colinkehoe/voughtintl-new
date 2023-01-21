@@ -7,13 +7,31 @@ import {
     PermissionFlagsBits,
 } from 'discord.js';
 import fetch from 'node-fetch';
+import chalk from 'chalk';
 
-type colorType = 'text' | 'variable' | 'error';
+export const color_text = (color: string, text: string) => {
+    switch (color) {
+        case 'red':
+            return chalk.red(text);
+        case 'green':
+            return chalk.green(text);
+        case 'yellow':
+            return chalk.yellow(text);
+        case 'blue':
+            return chalk.blue(text);
+        case 'green':
+            return chalk.green(text);
+        case 'magenta':
+            return chalk.magenta(text);
+        case 'cyan':
+            return chalk.cyan(text);
+        case 'white':
+            return chalk.white(text);
+        default:
+            return chalk.white(text);
+    }
 
-const themeColors = {
-    text: '#ff8e4d',
-    variable: '#ff624d',
-    error: '#f5426c',
+    return chalk.blue(text);
 };
 
 export const random_chance = (chance: number) => {
@@ -54,3 +72,8 @@ export const fetch_JSON = (url: string) => {
         console.error(err);
     }
 };
+
+
+const add_two = (a: number, b: number) => {
+    return a + b;
+}

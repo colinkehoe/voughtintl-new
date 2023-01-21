@@ -32,7 +32,7 @@ const skip: Button = {
 
         queue.skip();
 
-        const row: any = new ActionRowBuilder().addComponents(
+        const row: ActionRowBuilder<ButtonBuilder> = new ActionRowBuilder<ButtonBuilder>().addComponents(
             new ButtonBuilder()
                 .setCustomId('pause')
                 .setEmoji('⏸️')

@@ -4,8 +4,10 @@ import {
     SlashCommandBuilder,
     GuildMember,
     Role,
+    RoleSelectMenuBuilder
 } from 'discord.js';
 import { SlashCommand } from '../../types';
+import { color_text } from '../../utils/utils';
 
 const ban: SlashCommand = {
     data: new SlashCommandBuilder()
@@ -25,8 +27,10 @@ const ban: SlashCommand = {
             );
         }
 
-        const target: NonNullable<any> =
-            interaction.options.getMentionable('user');
+        
+
+        const target: any =
+            interaction.options.getMentionable('user', true);
         if (!target)
             return interaction.editReply('Please specify a user to ban!');
         if (target.id === interaction.user.id)
@@ -43,7 +47,7 @@ const ban: SlashCommand = {
         const mod: GuildMember | undefined =
             interaction.guild!.members.cache.get(interaction.user.id);
         if (
-            mod!.roles.cache.some((role: Role) => {
+            !mod!.roles.cache.some((role: Role) => {
                 role.name === 'Vought Executives (Admins)' ||
                     role.name === 'Vought Staff (Mods)' ||
                     role.name === 'Overlord';
@@ -52,7 +56,7 @@ const ban: SlashCommand = {
             await member
                 .ban()
                 .then(() => {
-                    console.log(`Banned ${target.tag}`);
+                    console.log(color_text('red', `Banned ${target.tag}`));
                     interaction.editReply(
                         `${interaction.user.tag} has banned ${target.tag}`
                     );

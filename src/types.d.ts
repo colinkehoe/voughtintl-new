@@ -40,7 +40,7 @@ export interface SlashCommand {
     cooldown?: number;
 }
 
-export interface Command {
+declare interface Command {
     name: string;
     aliases?: string[];
     run: (Client: Client, ...args) => Promise<void>;

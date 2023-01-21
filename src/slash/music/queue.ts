@@ -8,7 +8,6 @@ import {
     ButtonStyle,
 } from 'discord.js';
 import { SlashCommand } from '../../types';
-import { isContext } from 'vm';
 
 const queue: SlashCommand = {
     data: new SlashCommandBuilder()
@@ -44,7 +43,7 @@ const queue: SlashCommand = {
                 })
                 .join('\n');
 
-        const buttons: any = new ActionRowBuilder().addComponents(
+        const buttons: ActionRowBuilder<ButtonBuilder> = new ActionRowBuilder<ButtonBuilder>().addComponents(
             new ButtonBuilder()
                 .setCustomId('first')
                 .setEmoji('⏮️')
@@ -63,7 +62,7 @@ const queue: SlashCommand = {
                 .setStyle(ButtonStyle.Primary)
         );
 
-        let embed = new EmbedBuilder()
+        let embed: EmbedBuilder = new EmbedBuilder()
             .setAuthor({
                 name: 'Voughtify',
                 iconURL: client.user?.avatarURL()!,

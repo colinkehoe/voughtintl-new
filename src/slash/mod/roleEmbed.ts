@@ -3,6 +3,7 @@ import {
     ChatInputCommandInteraction,
     SlashCommandBuilder,
     EmbedBuilder,
+    Message
 } from 'discord.js';
 import { SlashCommand } from '../../types';
 
@@ -42,7 +43,7 @@ const roleEmbed: SlashCommand = {
             .setTimestamp();
         await interaction.channel
             ?.send({ embeds: [embed] })
-            .then((msg) => {
+            .then((msg: Message) => {
                 msg.react('📰');
                 msg.react('📢');
                 msg.react('🎉');

@@ -39,7 +39,7 @@ const pause: Button = {
 
         queue.setPaused(true);
 
-        const row: any = new ActionRowBuilder().addComponents(
+        const row: ActionRowBuilder<ButtonBuilder> = new ActionRowBuilder<ButtonBuilder>().addComponents(
             new ButtonBuilder()
                 .setCustomId('resume')
                 .setEmoji('▶️')

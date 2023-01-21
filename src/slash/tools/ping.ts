@@ -27,7 +27,8 @@ const ping: SlashCommand = {
                         text: `Requested by ${interaction.user.username}`,
                         iconURL: interaction.user.avatarURL()!,
                     })
-                    .setTimestamp(),
+                    .setTimestamp()
+                    .setColor('#FF0000')
             ],
         });
     },

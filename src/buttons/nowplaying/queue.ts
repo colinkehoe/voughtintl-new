@@ -47,7 +47,7 @@ const queue: Button = {
             })
             .setTimestamp();
 
-        const row: any = new ActionRowBuilder().addComponents(
+        const row: ActionRowBuilder<ButtonBuilder> = new ActionRowBuilder<ButtonBuilder>().addComponents(
             new ButtonBuilder()
                 .setCustomId('first')
                 .setEmoji('⏮️')
