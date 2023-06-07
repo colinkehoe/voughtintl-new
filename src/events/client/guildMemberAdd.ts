@@ -1,8 +1,8 @@
-import { Client, GuildMember, EmbedBuilder, ChannelType } from 'discord.js';
+import { Client, Events, GuildMember, EmbedBuilder, ChannelType } from 'discord.js';
 import { Event } from '../../types';
 
 const guildMemberAdd: Event = {
-    name: 'guildMemberAdd',
+    name: Events.GuildMemberAdd,
     run: async (client: Client, member: GuildMember) => {
         console.log(`User ${member.user.username} joined the guild ${member.guild.name}. 
                    \nUser ID: (${member.user.id}) 
@@ -28,3 +28,5 @@ const guildMemberAdd: Event = {
         welcome.send({ embeds: [embed] });
     }
 }
+
+export default guildMemberAdd;

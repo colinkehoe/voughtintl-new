@@ -19,7 +19,7 @@ module.exports = {
     const user = interaction.member;
 
     if (
-      !user.roles.cache.find((r) => r.name === "Fresca") &&
+      !user.roles.cache.find((r) => r.name === "Fresca") ||
       !user.roles.cache.find((r) => r.name === "No Fresca")
     ) {
       //check if user has fresca role

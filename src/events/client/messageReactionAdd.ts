@@ -9,11 +9,12 @@ import {
     ActionRowBuilder,
     ButtonBuilder,
     ButtonStyle,
+    Events,
 } from 'discord.js';
 import { Event } from '../../types';
 
 const messageReactionAdd: Event = {
-    name: 'messageReactionAdd',
+    name: Events.MessageReactionAdd,
     run: async (client: Client, reaction: MessageReaction, user: User) => {
         if (reaction.message.guild === null) return;
         const channel = reaction.message.channel;

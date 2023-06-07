@@ -7,11 +7,12 @@ import {
     Message,
     GuildBasedChannel,
     EmbedBuilder,
+    Events,
 } from 'discord.js';
 import { Event } from '../../types';
 
 const messageReactionRemove: Event = {
-    name: 'messageReactionRemove',
+    name: Events.MessageReactionRemove,
     run: async (client: Client, reaction: MessageReaction, user: User) => {
         if (reaction.message.partial) await reaction.message.fetch();
         if (reaction.partial) await reaction.fetch();

@@ -1,9 +1,9 @@
-import { Client, Interaction } from 'discord.js';
+import { Client, Events, Interaction } from 'discord.js';
 import { Event } from '../../types';
 import { color_text } from '../../utils/utils';
 
 const ready: Event = {
-    name: 'ready',
+    name: Events.ClientReady,
     once: true,
     run: async (client: Client, interaction?: Interaction) => {
         console.log(

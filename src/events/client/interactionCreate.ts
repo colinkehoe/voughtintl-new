@@ -1,8 +1,8 @@
-import { Interaction, Client } from 'discord.js';
+import { Interaction, Client, Events } from 'discord.js';
 import { Event } from '../../types';
 
 const interactionCreate: Event = {
-    name: 'interactionCreate',
+    name: Events.InteractionCreate,
     run: async (client: Client, interaction: any) => {
         if (interaction.isUserContextMenuCommand()) {
             if (!interaction.isCommand()) return;

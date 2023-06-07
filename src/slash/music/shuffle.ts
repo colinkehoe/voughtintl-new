@@ -42,7 +42,7 @@ const shuffle: SlashCommand = {
               })
             : await interaction.editReply(
                   'There was an error shuffling the queue.'
-              );
+            );
     },
 };
 

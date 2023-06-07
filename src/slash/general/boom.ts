@@ -3,6 +3,7 @@ import {
     SlashCommandBuilder,
     EmbedBuilder,
     IntegrationApplication,
+    ChatInputCommandInteraction,
 } from 'discord.js';
 import { SlashCommand } from '../../types';
 
@@ -16,7 +17,7 @@ const boom: SlashCommand = {
                 .setDescription('The user to boom')
                 .setRequired(true)
         ),
-    run: async (client: Client, interaction: any) => {
+    run: async (client: Client, interaction: ChatInputCommandInteraction) => {
         const target = interaction.options.getUser('target');
 
         if (target.bot)
