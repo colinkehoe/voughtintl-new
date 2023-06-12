@@ -1,16 +1,4 @@
-import {
-    Client,
-    SlashCommandBuilder,
-    CommandInteraction,
-    Collection,
-    PermissionResolvable,
-    Message,
-    AutocompleteInteraction,
-    GuildMemberRoleManager,
-    Snowflake,
-    ButtonInteraction,
-    ContextMenuCommandBuilder,
-} from 'discord.js';
+import * as Discord from 'discord.js';
 import { ImageURLOptions } from '@discordjs/rest';
 import {
     Player,
@@ -33,29 +21,29 @@ declare global {
 }
 
 export interface SlashCommand {
-    data: SlashCommandBuilder | any;
-    run: (client: Client, interaction: any) => Promise<Message | void>;
-    autoComplete?: (interaction: AutocompleteInteraction) => Promise<void>;
-    permissions?: PermissionResolvable[];
+    data: Discord.SlashCommandBuilder | any;
+    run: (client: Discord.Client, interaction: any) => Promise<Discord.Message | void>;
+    autoComplete?: (interaction: Discord.AutocompleteInteraction) => Promise<void>;
+    permissions?: Discord.PermissionResolvable[];
     cooldown?: number;
 }
 
 declare interface Command {
     name: string;
     aliases?: string[];
-    run: (Client: Client, ...args) => Promise<void>;
-    permissions?: PermissionResolvable[];
+    run: (Client: Discord.Client, ...args) => Promise<void>;
+    permissions?: Discord.PermissionResolvable[];
 }
 
 export interface ContextMenuCommand {
-    data: ContextMenuCommandBuilder;
+    data: Discord.ContextMenuCommandBuilder;
     run: (
         client: Client,
         interaction:
-            | ContextMenuCommandInteraction
-            | UserContextMenuCommandInteraction
+            | Discord.ContextMenuCommandInteraction
+            | Discord.UserContextMenuCommandInteraction
     ) => Promise<void>;
-    permissions?: PermissionResolvable[];
+    permissions?: Discord.PermissionResolvable[];
     cooldown?: number;
 }
 
@@ -68,8 +56,8 @@ export interface Event {
 export interface Button {
     name: string;
     run: (
-        client: Client,
-        button: ButtonInteraction,
+        client: Discord.Client,
+        button: Discord.ButtonInteraction,
         ...args
     ) => Promise<InteractionResponse>;
     cooldown?: number;
@@ -77,17 +65,17 @@ export interface Button {
 
 declare module 'discord.js' {
     export interface Client {
-        slashCommands: Collection<string, SlashCommand>;
-        events: Collection<string, Event>;
-        commands: Collection<string, Command>;
-        cooldowns: Collection<string, number>;
+        slashCommands: Discord.Collection<string, SlashCommand>;
+        events: Discord.Collection<string, Event>;
+        commands: Discord.Collection<string, Command>;
+        cooldowns: Discord.Collection<string, number>;
         player: Player;
     }
 
     export interface GuildMember {
-        id: Snowflake;
+        id: Discord.Snowflake;
         user: User;
-        displayName?: string;
+        displayName: string;
         nickname?: string;
 
         avatar?: string;
@@ -229,7 +217,7 @@ declare module 'discord-player' {
     }
 
     export interface Player {
-        client: Client<boolean>;
+        client: Discord.Client<boolean>;
         options: PlayerInitOptions;
     }
 }
@@ -239,7 +227,7 @@ export namespace SeasonInfo {
     export interface WebChannel {
         id?: number;
         name?: string;
-        country?: Country;
+        country?: string;
         officialSite?: string;
     }
     export interface Image {
