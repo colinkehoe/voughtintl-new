@@ -20,11 +20,11 @@ const boom: SlashCommand = {
     run: async (client: Client, interaction: ChatInputCommandInteraction) => {
         const target = interaction.options.getUser('target');
 
-        if (target.bot)
+        if (target?.bot)
             return interaction.editReply(`You can't try to blow up a bot!`);
-        if (target.id === client.user?.id)
+        if (target?.id === client.user?.id)
             return interaction.editReply(`You can't try to blow me up!`);
-        if (target.id === interaction.user.id)
+        if (target?.id === interaction.user.id)
             return interaction.editReply(`You can't blow yourself up!`);
 
         const embed = new EmbedBuilder()
@@ -33,11 +33,11 @@ const boom: SlashCommand = {
                 iconURL: client.user?.avatarURL()!,
             })
             .setTitle('Boom!')
-            .setDescription(`You blew up ${target.tag}!`)
+            .setDescription(`You blew up ${target?.tag}!`)
             .setImage('https://cdn.hswstatic.com/gif/shc-update.jpg')
             .setFooter({
                 text: `Requested by ${interaction.user.tag}`,
-                iconURL: interaction.user.avatarURL(),
+                iconURL: interaction.user.avatarURL()!
             })
             .setTimestamp();
 

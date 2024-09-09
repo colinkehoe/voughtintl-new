@@ -1,3 +1,9 @@
+/*
+ * Button: queue
+ ! This is a button.
+ ? This button shows the queue. 
+*/
+
 import {
     Client,
     ButtonInteraction,

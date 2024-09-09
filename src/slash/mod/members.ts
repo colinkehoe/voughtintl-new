@@ -1,3 +1,9 @@
+/*
+ * Command: members
+ ! This is a slash command.
+ ? This command gets a list of members in a server.
+*/
+
 import {
     Client,
     ChatInputCommandInteraction,
@@ -67,7 +73,7 @@ const members: SlashCommand = {
             return interaction.editReply(list);
         }
 
-        var list: string;
+        var list: string = 'defauult';
 
         switch (online) {
             case 0:

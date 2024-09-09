@@ -1,3 +1,9 @@
+/*
+ * Command: mute
+ ! This is a slash command.
+ ? This command mutes a user.
+*/
+
 import {
     Client,
     ChatInputCommandInteraction,

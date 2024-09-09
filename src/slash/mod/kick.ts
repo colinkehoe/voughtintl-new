@@ -1,3 +1,9 @@
+/*
+ * Command: kick
+ ! This is a slash command.
+ ? This command kicks a user.
+*/
+
 import {
     Client,
     ChatInputCommandInteraction,

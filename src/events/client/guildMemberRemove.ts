@@ -1,3 +1,9 @@
+/*
+ * Event: guildMemberRemove
+ ! Emitted whenever a user leaves a guild
+ ! that the client is in.
+*/
+
 import { Client, Events, GuildMember } from 'discord.js';
 import { Event } from '../../types';
 

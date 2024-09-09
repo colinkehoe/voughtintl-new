@@ -1,3 +1,8 @@
+/*
+ * Event: messageReactionAdd
+ ! Emitted whenever a reaction is added to a message.
+*/
+
 import {
     Client,
     User,

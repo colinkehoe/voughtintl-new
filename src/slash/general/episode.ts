@@ -92,6 +92,8 @@ const episode: SlashCommand = {
             else return href;
         });
 
+        
+
         const episodesAPI = encodeURI(
             `http://api.tvmaze.com/seasons/${
                 seasonsArray[season! - 1]
@@ -162,7 +164,6 @@ const episode: SlashCommand = {
                 .setFooter({
                     text: `Requested by ${interaction.user.username}`,
                     iconURL: interaction.user.displayAvatarURL({
-                        dynamic: true,
                     }),
                 })
                 .setThumbnail(seasonImages[season! - 1])
@@ -191,7 +192,6 @@ const episode: SlashCommand = {
                 .setFooter({
                     text: `Requested by ${interaction.user.username}`,
                     iconURL: interaction.user.displayAvatarURL({
-                        dynamic: true,
                     }),
                 })
                 .setThumbnail(episodeImages[season! - 1])

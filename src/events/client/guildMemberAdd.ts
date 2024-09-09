@@ -1,3 +1,9 @@
+/*
+ * Event: guildMemberAdd
+ ! Emitted whenever a user joins a guild that
+ ! the client is in.
+*/
+
 import { Client, Events, GuildMember, EmbedBuilder, ChannelType } from 'discord.js';
 import { Event } from '../../types';
 

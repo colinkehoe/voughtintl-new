@@ -1,3 +1,9 @@
+/*
+ * Button: skip
+ ! This is a button.
+ ? Skips the current song.
+*/
+
 import {
     Client,
     ButtonInteraction,

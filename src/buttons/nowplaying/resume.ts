@@ -1,3 +1,9 @@
+/*
+ * Button: resume
+ ! This is a button.
+ ? This button resumes the music. 
+*/
+
 import {
     Client,
     ButtonInteraction,

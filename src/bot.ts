@@ -1,3 +1,9 @@
+/*
+ * Project: Vought International
+ ! Rebuilt from the ground up by Colin Kehoe
+ ? This is the main file for the bot.
+*/
+
 import { Client, Collection, GatewayIntentBits, Partials } from 'discord.js';
 import { Player } from 'discord-player';
 import { readdirSync } from 'fs';
@@ -51,7 +57,7 @@ readdirSync('./dist/handlers')
         try {
             process.stdout.write(`\nLoading handler: ${file}...`);
             require(`./handlers/${file}`)(client);
-        } catch (error) {
+        } catch (error: any) {
             console.log(
                 color_text(
                     'red',
@@ -65,3 +71,10 @@ readdirSync('./dist/handlers')
     });
 
 client.login(process.env.DISCORD_TOKEN);
+
+const guild = client.guilds.cache.get("983913934153195520");
+
+    // This takes ~1 hour to update
+client.application?.commands.set([]);
+    // This updates immediately
+guild?.commands.set([]);

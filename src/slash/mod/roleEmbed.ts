@@ -1,3 +1,9 @@
+/*
+ * Command: roleEmbed
+ ! This is a slash command.
+ ? This command creates a role embed.
+*/
+
 import {
     Client,
     ChatInputCommandInteraction,

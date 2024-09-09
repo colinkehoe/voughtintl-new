@@ -1,3 +1,9 @@
+/*
+ * Event: interactionCreate
+ ! Emitted whenever an interaction is created
+ ! (button, slash command, context menu command, etc.)
+*/
+
 import { Interaction, Client, Events } from 'discord.js';
 import { Event } from '../../types';
 

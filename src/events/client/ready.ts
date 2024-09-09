@@ -1,3 +1,10 @@
+/*
+ * Event: ready
+ ! Fires when the bot logs in
+ ? This event is only fired once.
+*/
+
+
 import { Client, Events, Interaction } from 'discord.js';
 import { Event } from '../../types';
 import { color_text } from '../../utils/utils';

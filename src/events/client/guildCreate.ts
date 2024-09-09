@@ -1,3 +1,8 @@
+/*
+ * Event: guildCreate
+ ! Emitted whenever the client joins a new guild.
+*/
+
 import { Client, Events, Guild } from 'discord.js';
 import { Event } from '../../types';
 

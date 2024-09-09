@@ -1,3 +1,9 @@
+/*
+ * Event: messageReactionRemove
+ ! Emitted whenever a reaction is removed 
+ ! from a cached message.
+*/
+
 import {
     Client,
     GuildMember,

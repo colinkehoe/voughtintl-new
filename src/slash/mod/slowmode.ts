@@ -1,3 +1,9 @@
+/*
+ * Command: slowmode
+ ! This is a slash command.
+ ? This command sets the slowmode of a channel.
+*/
+
 import {
     Client,
     ChatInputCommandInteraction,

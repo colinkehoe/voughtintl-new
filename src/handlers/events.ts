@@ -21,7 +21,7 @@ module.exports = (client: Client) => {
                       console.log(`New event: ${event.name}`);
                       event.run(client, ...args);
                   });
-        } catch (error) {
+        } catch (error: any) {
             console.log(
                 color_text(
                     'red',

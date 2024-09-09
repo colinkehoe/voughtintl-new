@@ -1,3 +1,9 @@
+/*
+ * Command: nuke
+ ! This is a slash command.
+ ? This command nukes a channel.
+*/
+
 import {
     Client,
     ChatInputCommandInteraction,

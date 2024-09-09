@@ -1,3 +1,9 @@
+/*
+ * Button: stop
+ ! This is a button.
+ ? Stops the music.
+*/
+
 import {
     Client,
     ButtonInteraction,

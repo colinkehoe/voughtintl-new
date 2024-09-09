@@ -23,7 +23,7 @@ module.exports = (client: Client) => {
                     try {
                         slashCommands.push(command.data);
                         client.slashCommands.set(command.data.name, command);
-                    } catch (error) {
+                    } catch (error: any) {
                         console.log(
                             color_text(
                                 'red',
@@ -37,6 +37,7 @@ module.exports = (client: Client) => {
                 });
         });
 
+    /*
     //Load normal commands
     readdirSync('./dist/commands')
         .filter((folder) => !folder.endsWith('.DS_Store'))
@@ -51,6 +52,7 @@ module.exports = (client: Client) => {
                     client.commands.set(command.name, command);
                 });
         });
+        */
 
     //create REST and then register slash commands to the Discord API
     const rest = new REST({ version: '10' }).setToken(

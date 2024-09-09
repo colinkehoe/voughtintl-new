@@ -1,3 +1,9 @@
+/*
+ * Button: pause
+ ! This is a button.
+ ? This button pauses the music.
+*/
+
 import {
     Client,
     EmbedBuilder,
